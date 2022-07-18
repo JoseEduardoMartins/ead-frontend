@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useContext} from "react";
+import React, { createContext, useState, useEffect, useContext} from "react";
 import * as auth from "../services/auth";
 import api from "../services/api";
 
@@ -15,15 +15,15 @@ interface User {
     isActive: Boolean;
 }
 
-interface context { 
-    signed: Boolean;
-    user: User;
-    loading: Boolean;
-    signIn: Function;
-    signOut: Function;
+interface AuthType { 
+    signed?: Boolean;
+    user?: User;
+    loading?: Boolean;
+    signIn?: Function;
+    signOut?: Function;
 }
 
-const AuthContext = createContext<context>();
+const AuthContext = createContext<AuthType>({});
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
